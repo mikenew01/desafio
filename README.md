@@ -74,6 +74,28 @@ Retorno:
 }
 ```
 
+## Iniciando frontend
+* 1 - Executar o comando: 
+```$xslt
+cd frontend/
+```
+
+* 2 - Executar o comando:
+```$xslt
+yarn install ou npm install
+```
+
+* 3 - Executar o comando:
+```$xslt
+yarn start ou npm start
+```
+
+* 4 - Logar com usuário e senha: 
+```$xslt
+Usuário: admin
+Senha: 123456
+```
+
 ## Decisões técnicas
 * A arquitetura do Quarkus foi escolhida pelo fato de prover maior facilidade no desenvolvimento contendo as especificações do JavaEE, JPA, CDI e etc. 
 
