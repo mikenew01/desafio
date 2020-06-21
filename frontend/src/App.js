@@ -13,15 +13,34 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'typeface-roboto';
 
 import {persistStores, store} from './store';
+import {makeStyles} from "@material-ui/core/styles";
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+        display: "flex",
+        backgroundColor: '#f5f5f5'
+    },
+    title: {
+        flexGrow: 1,
+    },
+    bar: {
+        backgroundColor: '#2c387e'
+    }
+}));
 
 function App() {
+    const classes = useStyles();
+
     return (
         <>
             <CssBaseline/>
-            <AppBar position="static" color="primary">
+
+            <AppBar position="static" className={classes.bar}>
                 <Toolbar>
-                    <Typography component="h2" variant="h6" color="initial" gutterBottom>
-                        DESAFIO - CAD
+                    <Typography variant="h6" className={classes.title}>
+                        DESAFIO-MCP
                     </Typography>
                 </Toolbar>
             </AppBar>
