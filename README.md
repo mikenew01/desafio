@@ -1,8 +1,8 @@
 ## Requisitos
 * Instalação do Docker 19.03.8 (Podendo ser outras versões)
 * Instalação do Docker Compose 1.25.5 (Podendo ser outras versões)
-* Instalação da JDK 11 (Recomendo a GraalVM 11). 
 * Instalação do nodejs, npm ou yarn. 
+* Instalação da [JDK/GraalVM 11](https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-20.1.0/graalvm-ce-java11-windows-amd64-20.1.0.zip) 
 
 ## Iniciando Backend 
 * 1 - Executar o comando para subir o banco de dados:
@@ -72,27 +72,6 @@ Retorno:
   "mensage": "Login realizado com sucesso!",
   "token": "eyJraWQiOiIvcHJpdmF0ZUtleS5wZW0iLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ3aWRlbiIsImp0aSI6ImVjMzI0MzE1LTcwMzgtNDcyNC1hYWMwLTc2OTU3NjY0NWZlNyIsInN1YiI6Im1rMiIsInVwbiI6Im1rMiIsImdyb3VwcyI6WyJPUEVSQURPUiJdLCJhdWQiOiJ1c2luZy1qd3QiLCJleHAiOjE1OTI3MDk0OTUsImlhdCI6MTU5MjcwNTg5NSwiYXV0aF90aW1lIjoiTnVtZXJpY0RhdGV7MTU5MjcwNTg5NSAtPiAyMCBkZSBqdW4gZGUgMjAyMCAyMzoxODoxNSBCUlR9In0.rnNAOuOo6TtMMm40oMOlSwE51x-ZNAIJ1v54-Q_NRHpn6SIsNeOX9nZ1hC1iIN8ls3evoQjbQrxm-7QHXjJJQzfZODFSQfoXaHov-JMn8WjDpyQjlbJ74GDovRJFESgdBgCg47BM_4nV8orJ9a99jTi5WpuMpwHMHznI8td3jwqvfhTqaBR2kem4QktpRo3COJYhDa7RnSutX6Qtx65aGBCX5VFlQnqs6ukpApyZ9ilOeHRtsH3Z2Emb23XbkWj8DfG4bwT3byBzJHYnmoijZRqI5Z4rxilBY-RSnmIWXh99kNPT97lqvnuZGy-4Bw1Kv8aI8d734vUxJhUpB-TZyQ"
 }
-```
-
-## Iniciando frontend
-* 1 - Entrar na pasta do frontend:
-```
-cd frontend/
-```
-
-* 2 - Executar o comando:
-```
-yarn install ou npm install
-```
-* 3 - Executar o comando:
-```
-yarn start ou npm start
-```
-
-* 4 - Acessar a URL http://localhost:3000 com usuário e senha: 
-```
-Usuário: admin
-Senha: 12456
 ```
 
 ## Decisões técnicas
