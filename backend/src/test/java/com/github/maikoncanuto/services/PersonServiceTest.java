@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import javax.inject.Inject;
 import java.util.Date;
 
-import static com.github.maikoncanuto.domains.enums.TypePersonEnum.NATURAL_PERSON;
+import static com.github.maikoncanuto.domains.enums.TypePersonEnum.PESSOA_FISICA;
 
 @QuarkusTest
 @QuarkusTestResource(H2DatabaseTestResource.class)
@@ -31,7 +31,7 @@ public class PersonServiceTest {
         person.setName("person");
         person.setNameFather("pesronFather");
         person.setNameMother("personMother");
-        person.setTypePerson(NATURAL_PERSON);
+        person.setTypePerson(PESSOA_FISICA);
     }
 
 

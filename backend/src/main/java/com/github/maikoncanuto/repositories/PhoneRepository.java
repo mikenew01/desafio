@@ -23,7 +23,7 @@ public class PhoneRepository {
 
     public Optional<Phone> update(final Phone phone) {
         final var phoneUpdate = entityManager.merge(phone);
-        return ofNullable(phone);
+        return ofNullable(phoneUpdate);
     }
 
     public Optional<Phone> findById(final Long id) {

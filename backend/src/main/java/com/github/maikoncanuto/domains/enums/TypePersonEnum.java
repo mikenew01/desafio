@@ -2,7 +2,7 @@ package com.github.maikoncanuto.domains.enums;
 
 public enum TypePersonEnum {
 
-    NATURAL_PERSON,
-    LEGAL_PERSON
+    PESSOA_FISICA,
+    PESSOA_JURIDICA
 
 }

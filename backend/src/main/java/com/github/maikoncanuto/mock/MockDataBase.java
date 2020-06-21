@@ -11,7 +11,7 @@ import javax.inject.Singleton;
 import java.util.Date;
 
 import static com.github.maikoncanuto.domains.enums.RoleEnum.ADMINISTRADOR;
-import static com.github.maikoncanuto.domains.enums.TypePersonEnum.NATURAL_PERSON;
+import static com.github.maikoncanuto.domains.enums.TypePersonEnum.PESSOA_FISICA;
 
 @Startup
 @Singleton
@@ -25,7 +25,7 @@ public class MockDataBase {
         final var operatorPrincipal = new OperatorDTO();
         final var personPrincial = new PersonDTO();
 
-        personPrincial.setTypePerson(NATURAL_PERSON);
+        personPrincial.setTypePerson(PESSOA_FISICA);
         personPrincial.setName("Gabriela");
         personPrincial.setNameMother("Emanuela Santos");
         personPrincial.setNameFather("José Carlos Silva");
