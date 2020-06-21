@@ -1,13 +1,19 @@
 package com.github.maikoncanuto.domains.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.github.maikoncanuto.domains.enums.RoleEnum;
 
 public class OperatorDTO extends BaseDTO {
 
     private Long id;
+
     private String login;
+
+    @JsonIgnore
     private String password;
+
     private PersonDTO person;
+
     private RoleEnum role;
 
     public RoleEnum getRole() {

@@ -27,7 +27,7 @@ public class AuthService {
     @Transactional(NOT_SUPPORTED)
     public String login(final AuthLoginDTO authLoginDTO) throws Exception {
         final var operator = operatorService.findByLoginAndPassword(authLoginDTO.getLogin(), authLoginDTO.getPassword());
-        return tokenService.createToken(operator.getLogin(), operator.getRole().getValue());
+        return tokenService.createToken(operator.getLogin(), operator.getRole().name());
     }
 
 }

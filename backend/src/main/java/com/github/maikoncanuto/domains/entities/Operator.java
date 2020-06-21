@@ -6,7 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import static com.github.maikoncanuto.domains.enums.RoleEnum.OPERATOR;
+import static com.github.maikoncanuto.domains.enums.RoleEnum.OPERADOR;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -29,7 +29,7 @@ public class Operator extends BaseEntity {
     @NotNull
     @Enumerated
     @Column(name = "DS_ROLE", length = 20, nullable = false)
-    private RoleEnum role = OPERATOR;
+    private RoleEnum role = OPERADOR;
 
     @NotNull
     @ManyToOne

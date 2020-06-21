@@ -8,7 +8,6 @@ import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-import java.util.List;
 
 import static com.github.maikoncanuto.domains.enums.RoleAllow.ADMINISTRADOR;
 import static com.github.maikoncanuto.domains.enums.RoleAllow.OPERADOR;
@@ -27,7 +26,7 @@ public class OperatorResource {
     @POST
     @RolesAllowed({ADMINISTRADOR, OPERADOR})
     public Response create(OperatorDTO operatorDTO) {
-        final var response = new ResponseDTO<OperatorDTO>();
+        final var response = new ResponseDTO<>();
 
         try {
             final var operador = operatorService.save(operatorDTO);
@@ -46,9 +45,74 @@ public class OperatorResource {
     }
 
     @GET
+    @Path("/{id}")
+    @RolesAllowed({ADMINISTRADOR, OPERADOR})
+    public Response find(@PathParam("id") final Long id) {
+        final var response = new ResponseDTO<>();
+
+        try {
+            final var operador = operatorService.findById(id);
+            response.setCode(200);
+            response.setMensage("Operador encontrado com sucesso!");
+            response.setData(operador);
+        } catch (Exception e) {
+            response.setCode(400);
+            response.setMensage(format("Erro ao buscar Operador, erro: %s", e.getMessage()));
+        }
+
+        return status(response.getCode())
+                .entity(response.getData())
+                .build();
+    }
+
+    @PUT
+    @Path("/{id}")
+    @RolesAllowed({ADMINISTRADOR, OPERADOR})
+    public Response update(@PathParam("id") final Long id, final OperatorDTO operatorDTO) {
+        final var response = new ResponseDTO<>();
+
+        try {
+            if (operatorDTO.getId() == null)
+                operatorDTO.setId(id);
+
+            final var operador = operatorService.update(operatorDTO);
+            response.setCode(200);
+            response.setMensage("Operador atualizado com sucesso!");
+            response.setData(operador);
+        } catch (Exception e) {
+            response.setCode(400);
+            response.setMensage(format("Erro ao atualizar Operador, erro: %s", e.getMessage()));
+        }
+
+        return status(response.getCode())
+                .entity(response.getData())
+                .build();
+    }
+
+    @DELETE
+    @Path("/{id}")
+    @RolesAllowed({ADMINISTRADOR, OPERADOR})
+    public Response delete(@PathParam("id") final Long id) {
+        final var response = new ResponseDTO<>();
+
+        try {
+            operatorService.delete(id);
+            response.setCode(200);
+            response.setMensage("Operador removido com sucesso!");
+        } catch (Exception e) {
+            response.setCode(400);
+            response.setMensage(format("Erro ao remover Operador, erro: %s", e.getMessage()));
+        }
+
+        return status(response.getCode())
+                .entity(response.getData())
+                .build();
+    }
+
+    @GET
     @RolesAllowed({ADMINISTRADOR, OPERADOR})
     public Response findAll() {
-        final var response = new ResponseDTO<List<OperatorDTO>>();
+        final var response = new ResponseDTO<>();
 
         try {
             final var operators = operatorService.findAll();

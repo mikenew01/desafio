@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 
+import static com.github.maikoncanuto.services.utils.PasswordUtil.crypt;
 import static java.util.stream.Collectors.toUnmodifiableList;
 import static javax.transaction.Transactional.TxType.*;
 
@@ -31,6 +32,8 @@ public class OperatorService {
         operatorDTO.setPerson(personDTO);
 
         final var operator = operatorMapper.toEntity(operatorDTO);
+        operator.setPassword(crypt(operator.getPassword()));
+
         final var operatorOptional = operatorRepository.save(operator);
 
         if (operatorOptional.isPresent())
@@ -70,7 +73,7 @@ public class OperatorService {
 
     @Transactional(NOT_SUPPORTED)
     public OperatorDTO findByLoginAndPassword(final String login, final String password) throws Exception {
-        final var operator = operatorRepository.findByLoginAndPassword(login, password);
+        final var operator = operatorRepository.findByLoginAndPassword(login, crypt(password));
 
         if (operator.isPresent())
             return operatorMapper.toDTO(operator.get());

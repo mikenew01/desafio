@@ -26,6 +26,7 @@ public class AuthResource {
     AuthService authService;
 
     @POST
+    @Path("/register")
     public Response register(final OperatorDTO operatorDTO) {
         final var authMensage = new AuthRegisterResponseDTO<OperatorDTO>();
 
@@ -46,6 +47,7 @@ public class AuthResource {
     }
 
     @POST
+    @Path("/login")
     public Response login(final AuthLoginDTO authLoginDTO) {
         final var authMensage = new AuthLoginResponseDTO();
 
