@@ -33,7 +33,7 @@ public class MockDataBase {
         personPrincial.setDocument("00011122233");
 
         operatorPrincipal.setLogin("admin");
-        operatorPrincipal.setPassword("123");
+        operatorPrincipal.setPassword("123456");
         operatorPrincipal.setPerson(personPrincial);
         operatorPrincipal.setRole(ADMINISTRADOR);
 
