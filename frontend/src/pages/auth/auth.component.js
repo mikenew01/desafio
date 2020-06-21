@@ -13,13 +13,16 @@ import CardActions from "@material-ui/core/CardActions";
 
 const useStyles = makeStyles((theme) => ({
     container: {
-        width: 500,
-        height: 500,
+        width: '100%',
+        marginTop: 200,
+        marginLeft: 150,
         flexDirection: "column",
         justifyContent: "center",
         display: "flex"
     },
     card: {
+        width: 500,
+        height: 250,
         display: 'flex',
         flexDirection: "column",
         justifyItems: "center"
