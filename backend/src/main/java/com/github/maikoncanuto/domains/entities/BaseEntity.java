@@ -12,7 +12,7 @@ public abstract class BaseEntity implements Serializable {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     @Column(name = "DT_UPDATEAT")
-    private LocalDateTime updateAt;
+    private LocalDateTime updateAt = LocalDateTime.now();
 
     public LocalDateTime getCreatedAt() {
         return createdAt;

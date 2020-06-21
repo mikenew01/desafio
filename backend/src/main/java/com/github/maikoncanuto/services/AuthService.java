@@ -7,6 +7,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
+import static com.github.maikoncanuto.domains.enums.RoleEnum.OPERADOR;
 import static javax.transaction.Transactional.TxType.NOT_SUPPORTED;
 import static javax.transaction.Transactional.TxType.REQUIRED;
 
@@ -21,6 +22,7 @@ public class AuthService {
 
     @Transactional(REQUIRED)
     public OperatorDTO register(final OperatorDTO operatorDTO) throws Exception {
+        operatorDTO.setRole(OPERADOR);
         return operatorService.save(operatorDTO);
     }
 

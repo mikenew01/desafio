@@ -9,7 +9,6 @@ public class OperatorDTO extends BaseDTO {
 
     private String login;
 
-    @JsonIgnore
     private String password;
 
     private PersonDTO person;

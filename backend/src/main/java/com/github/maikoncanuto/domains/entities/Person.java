@@ -4,6 +4,8 @@ import com.github.maikoncanuto.domains.enums.TypePersonEnum;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 import static javax.persistence.EnumType.STRING;
@@ -19,6 +21,8 @@ public class Person extends BaseEntity {
     private Long id;
 
     @NotNull
+    @Size(max = 100, message = "Nao deve conter mais de 100 caracters.")
+    @Pattern(regexp = "[^0-9]*", message = "Nao pode conter numeros no name.")
     @Column(name = "DS_NAME", length = 100, nullable = false)
     private String name;
 
@@ -26,10 +30,14 @@ public class Person extends BaseEntity {
     @Column(name = "DS_DOCUMENT", length = 14, nullable = false)
     private String document;
 
+    @Size(max = 100, message = "Nao deve conter mais de 100 caracters.")
     @Column(name = "DS_NAME_FATHER", length = 100)
+    @Pattern(regexp = "[^0-9]*", message = "Nao pode conter numeros no nameFather.")
     private String nameFather;
 
+    @Size(max = 100, message = "Nao deve conter mais de 100 caracters.")
     @Column(name = "DS_NAME_MOTHER", length = 100)
+    @Pattern(regexp = "[^0-9]*", message = "Nao pode conter numeros no nameMother.")
     private String nameMother;
 
     @NotNull

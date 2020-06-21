@@ -5,8 +5,10 @@ import com.github.maikoncanuto.domains.enums.RoleEnum;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import static com.github.maikoncanuto.domains.enums.RoleEnum.OPERADOR;
+import static javax.persistence.EnumType.STRING;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -19,6 +21,7 @@ public class Operator extends BaseEntity {
     private Long id;
 
     @NotBlank
+    @Size(max = 15, message = "Nao deve conter mais de 15 caracters.")
     @Column(name = "DS_LOGIN_OPERATOR", length = 15, nullable = false, unique = true)
     private String login;
 
@@ -27,7 +30,7 @@ public class Operator extends BaseEntity {
     private String password;
 
     @NotNull
-    @Enumerated
+    @Enumerated(STRING)
     @Column(name = "DS_ROLE", length = 20, nullable = false)
     private RoleEnum role = OPERADOR;
 

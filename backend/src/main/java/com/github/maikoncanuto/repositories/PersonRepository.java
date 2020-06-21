@@ -16,9 +16,9 @@ public class PersonRepository {
     @Inject
     EntityManager entityManager;
 
-    public Optional<Person> save(final Person operator) {
-        entityManager.persist(operator);
-        return ofNullable(operator);
+    public Optional<Person> save(final Person person) {
+        entityManager.persist(person);
+        return ofNullable(person);
     }
 
     public Optional<Person> update(final Person person) {
