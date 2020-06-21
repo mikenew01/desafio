@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  backend-maikon:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=M@ikon1234.
+      - POSTGRES_USER=maikon
+    ports:
+      - "5433:5432"
+    volumes:
+      - database
+
+volumes:
+  database:
