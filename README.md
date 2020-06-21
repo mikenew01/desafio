@@ -1,7 +1,7 @@
 ## Requisitos
 * Instalação do Docker 19.03.8 (Podendo ser outras versões)
 * Instalação do Docker Compose 1.25.5 (Podendo ser outras versões)
-* Instalação da JDK 11 (Recomendo a GraalVM 11). 
+* Instalação da [JDK/GraalVM 11](https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-20.1.0/graalvm-ce-java11-windows-amd64-20.1.0.zip) 
 
 ## Iniciando Backend 
 * 1 - Executar o comando para subir o banco de dados:
