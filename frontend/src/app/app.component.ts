@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'mcp-root',
@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'MCP - Desafio';
+
+  habilitarMenu = false;
+
+  constructor() {
+    const currentUser = localStorage.getItem('currentUser');
+    this.habilitarMenu = !!currentUser;
+  }
 }

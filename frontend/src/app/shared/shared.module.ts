@@ -7,10 +7,15 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {LoginComponent} from './components/login/login.component';
+import {MatCardModule} from '@angular/material/card';
+import {ReactiveFormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
-  declarations: [MenuComponent],
+  declarations: [MenuComponent, LoginComponent, HomeComponent],
   imports: [
     CommonModule,
     MatSnackBarModule,
@@ -18,12 +23,15 @@ import {MatButtonModule} from '@angular/material/button';
     MatToolbarModule,
     MatListModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    RouterModule
   ],
-  providers: [
-  ],
+  providers: [],
   exports: [
-    MenuComponent
+    MenuComponent,
+    LoginComponent
   ]
 })
 export class SharedModule {
