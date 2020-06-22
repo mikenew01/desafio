@@ -1,7 +1,8 @@
 ## Requisitos
 * Instalação do Docker 19.03.8 (Podendo ser outras versões)
 * Instalação do Docker Compose 1.25.5 (Podendo ser outras versões)
-* Instalação do nodejs, npm ou yarn. 
+* Instalação do nodejs, npm.
+* Instalação do angular/cli 9. 
 * Instalação da [JDK/GraalVM 11](https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-20.1.0/graalvm-ce-java11-windows-amd64-20.1.0.zip) 
 
 ## Iniciando Backend 
@@ -82,12 +83,12 @@ cd frontend/
 
 * 2 - Executar o comando:
 ```$xslt
-yarn install ou npm install
+npm install
 ```
 
 * 3 - Executar o comando:
 ```$xslt
-yarn start ou npm start
+npm start
 ```
 
 * 4 - Logar com usuário e senha: 
