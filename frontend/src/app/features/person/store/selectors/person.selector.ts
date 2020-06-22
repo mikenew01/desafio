@@ -17,12 +17,4 @@ export const selectError = createSelector(selectFeature, state => state.error);
 
 export const selectPerson = createSelector(selectFeature, (state: State, prop: { id?: string }) => state.entities[prop.id]);
 
-export const selectPersonById = (id) => createSelector(selectAllPersons, (persons) => {
-  if (persons) {
-    return persons.find(person => {
-      return person.id === id;
-    });
-  } else {
-    return {};
-  }
-});
+

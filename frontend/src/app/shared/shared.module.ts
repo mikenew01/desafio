@@ -12,6 +12,7 @@ import {MatCardModule} from '@angular/material/card';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import {MatInputModule} from '@angular/material/input';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HomeComponent } from './components/home/home.component';
     MatButtonModule,
     MatCardModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    MatInputModule
   ],
   providers: [],
   exports: [

@@ -1,1 +1,72 @@
-<p>person-update works!</p>
+<section class="card">
+  <mat-card class="mat-elevation-z4">
+    <mat-card-title>Nova Pessoa</mat-card-title>
+    <mat-card-subtitle>Cadastro de nova pessoa no serviço</mat-card-subtitle>
+
+    <form [formGroup]="formGroup"
+          autocomplete="off" novalidate
+          (ngSubmit)="update(formGroup.value)">
+
+      <mat-card-content>
+        <div class="formulario">
+          <mat-form-field hintLabel="Campo obrigatório">
+            <mat-label>Nome completo</mat-label>
+            <input matInput type="text"
+                   placeholder="Exemplo: Maikon Canuto"
+                   formControlName="name"
+                   required
+                   minlength="3"
+                   maxlength="100"/>
+          </mat-form-field>
+
+          <mat-form-field hintLabel="Campo obrigatório">
+            <mat-label>Nome do pai</mat-label>
+            <input matInput
+                   type="text"
+                   placeholder="Exemplo: José Carlos"
+                   maxlength="100"
+                   minlength="3"
+                   required
+                   formControlName="nameFather"
+            />
+          </mat-form-field>
+
+          <mat-form-field hintLabel="Campo obrigatório">
+            <mat-label>Nome da mãe</mat-label>
+            <input matInput type="text"
+                   placeholder="Exemplo: Maria Carla"
+                   required
+                   maxlength="100"
+                   minlength="3"
+                   formControlName="nameMother"
+            />
+          </mat-form-field>
+
+          <mat-form-field hintLabel="Campo obrigatório">
+            <mat-label>Número de documento (CPF/CNPJ)</mat-label>
+            <input matInput type="text"
+                   minlength="10"
+                   maxlength="18"
+                   placeholder="Exemplo: 000.000.000-01"
+                   formControlName="document"
+                   required
+            />
+          </mat-form-field>
+
+          <mat-form-field hintLabel="Campo obrigatório">
+            <mat-label>Tipo de Pessoa</mat-label>
+            <mat-select required formControlName="typePerson">
+              <mat-option *ngFor="let action of optionsActionsList"
+                          [value]="action.value">{{action.description}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <button type="button" mat-raised-button color="warn" (click)="cancel()">Cancelar</button>
+        <button mat-raised-button color="primary">Confirmar</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</section>

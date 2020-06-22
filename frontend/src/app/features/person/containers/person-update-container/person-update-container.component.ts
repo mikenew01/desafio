@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {select, Store} from '@ngrx/store';
+import * as fromPerson from '../../store/reducers/person.reducer';
+import {Router} from '@angular/router';
+import {Person} from '../../../../shared/models/person.model';
+import {UpdatePerson} from '../../store/actions/person.action';
+import {Observable} from 'rxjs';
+import {selectPerson} from '../../store/selectors/person.selector';
 
 @Component({
   selector: 'mcp-person-update-container',
@@ -7,9 +14,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonUpdateContainerComponent implements OnInit {
 
-  constructor() { }
+  person$: Observable<Person>;
+
+  constructor(private personStore: Store<fromPerson.State>,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
+    this.person$ = this.personStore.pipe(select(selectPerson));
+  }
+
+  onUpdate(person: Person): void {
+    console.log('att', person);
+    this.personStore.dispatch(new UpdatePerson({person}));
+  }
+
+  onCancel(): void {
+    this.router.navigate(['/persons']);
   }
 
 }

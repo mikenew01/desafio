@@ -22,7 +22,6 @@ export class PersonListComponent implements OnInit {
   @Output() onUpdate: EventEmitter<any> = new EventEmitter<any>();
   @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
   @Output() onCreate: EventEmitter<any> = new EventEmitter<any>();
-  @Output() onDetail: EventEmitter<any> = new EventEmitter<any>();
 
   @Input() persons: Person[] = [];
 
@@ -38,10 +37,6 @@ export class PersonListComponent implements OnInit {
 
   update(person: Person): void {
     this.onUpdate.emit(person);
-  }
-
-  detail(person: Person): void {
-    this.onDetail.emit(person);
   }
 
   create(): void {

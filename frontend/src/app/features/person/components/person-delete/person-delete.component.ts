@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Person} from '../../../../shared/models/person.model';
 
 @Component({
   selector: 'mcp-person-delete',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonDeleteComponent implements OnInit {
 
-  constructor() { }
+  @Output() onCancel: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
 
-  ngOnInit(): void {
+  @Input() person: Person;
+
+  constructor() {
+  }
+
+  ngOnInit() {
+  }
+
+  delete(person: Person): void {
+    this.onDelete.emit(person);
+  }
+
+  cancel(): void {
+    this.onCancel.emit();
   }
 
 }

@@ -55,7 +55,7 @@ export class PersonEffects {
   updatePerson$ = this.actions$.pipe(
     ofType(PersonActionTypes.UPDATE_PERSON),
     switchMap((action: UpdatePerson) =>
-      this.personService.update(action.payload.id, action.payload.person).pipe(
+      this.personService.update(action.payload.person).pipe(
         mergeMap((res: Resposta) => [
           new UpdatePersonSuccess({person: res.data}),
           new MessageSuccess({message: res.mensage})

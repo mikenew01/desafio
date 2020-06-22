@@ -37,9 +37,4 @@ export class PersonListContainerComponent implements OnInit {
     this.router.navigate([url]);
   }
 
-  onDetail(person: Person): void {
-    const url = `/persons/detail/${person.id}`;
-    this.router.navigate([url]);
-  }
-
 }

@@ -1,1 +1,22 @@
-<p>person-delete works!</p>
+<mat-card class="card mat-elevation-z4">
+  <mat-card-header>
+    <mat-card-title>Excluir Pessoa</mat-card-title>
+    <mat-card-subtitle>Deseja excluir o pessoa escolhida ?</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div>
+      <div>
+        <strong>Nome da Pessoa: </strong>
+      </div>
+
+      <div>{{person.name}}</div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button type="button" mat-raised-button color="warn" (click)="cancel()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="delete(person)">Confirmar</button>
+  </mat-card-actions>
+</mat-card>
+

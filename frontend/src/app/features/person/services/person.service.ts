@@ -22,8 +22,8 @@ export class PersonService {
     return this.http.post<Resposta>(`${environment.api}/persons`, person);
   }
 
-  public update(id: number, person: Person): Observable<Resposta> {
-    return this.http.put<Resposta>(`${environment.api}/persons/${id}`, person);
+  public update(person: Person): Observable<Resposta> {
+    return this.http.put<Resposta>(`${environment.api}/persons/${person.id}`, person);
   }
 
   public delete(id: number): Observable<Resposta> {

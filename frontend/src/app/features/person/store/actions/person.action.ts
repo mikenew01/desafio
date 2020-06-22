@@ -52,7 +52,7 @@ export class GetPersonSuccess implements Action {
 export class UpdatePerson implements Action {
   readonly type = PersonActionTypes.UPDATE_PERSON;
 
-  constructor(public payload: { id: number, person: Person }) {
+  constructor(public payload: { person: Person }) {
   }
 }
 
