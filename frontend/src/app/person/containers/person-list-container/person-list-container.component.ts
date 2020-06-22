@@ -4,6 +4,7 @@ import * as fromPerson from '../../store/reducers/person.reducer';
 import {Observable} from 'rxjs';
 import {Person} from '../../../shared/models/person.model';
 import {selectAllPersons} from '../../store/selectors/person.selector';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'mcp-person-list-container',
@@ -14,7 +15,7 @@ export class PersonListContainerComponent implements OnInit {
 
   persons$: Observable<Person[]>;
 
-  constructor(private personStore: Store<fromPerson.State>) {
+  constructor(private personStore: Store<fromPerson.State>, private router: Router) {
     this.persons$ = personStore.pipe(select(selectAllPersons));
   }
 
@@ -22,19 +23,23 @@ export class PersonListContainerComponent implements OnInit {
   }
 
   onCreate(): void {
-    console.log('Criar');
+    const url = `/persons/create`;
+    this.router.navigate([url]);
   }
 
   onDelete(person: Person): void {
-    console.log('Deletar');
+    const url = `/persons/delete/${person.id}`;
+    this.router.navigate([url]);
   }
 
   onUpdate(person: Person): void {
-    console.log('Update');
+    const url = `/persons/update/${person.id}`;
+    this.router.navigate([url]);
   }
 
   onDetail(person: Person): void {
-    console.log('Detail');
+    const url = `/persons/detail/${person.id}`;
+    this.router.navigate([url]);
   }
 
 }

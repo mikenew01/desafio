@@ -1,1 +1,8 @@
-<mcp-person-list [persons]="persons$ | async"></mcp-person-list>
+<mcp-person-list [persons]="persons$ | async"
+                 (onCreate)="onCreate()"
+                 (onDelete)="onDelete($event)"
+                 (onUpdate)="onUpdate($event)"
+                 (onDetail)="onDetail($event)"
+>
+
+</mcp-person-list>

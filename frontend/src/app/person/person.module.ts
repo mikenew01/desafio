@@ -16,13 +16,32 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {HttpClientModule} from '@angular/common/http';
+import {PersonDetailContainerComponent} from './containers/person-detail-container/person-detail-container.component';
+import {PersonUpdateContainerComponent} from './containers/person-update-container/person-update-container.component';
+import {PersonDeleteContainerComponent} from './containers/person-delete-container/person-delete-container.component';
+import {PersonCreateContainerComponent} from './containers/person-create-container/person-create-container.component';
+import {PersonCreateComponent} from './components/person-create/person-create.component';
+import {PersonUpdateComponent} from './components/person-update/person-update.component';
+import {PersonDeleteComponent} from './components/person-delete/person-delete.component';
+import {PersonDetailComponent} from './components/person-detail/person-detail.component';
+import {MatOptionModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
-  declarations: [PersonListContainerComponent, PersonListComponent],
+  declarations: [PersonListContainerComponent,
+    PersonListComponent,
+    PersonDetailContainerComponent,
+    PersonUpdateContainerComponent,
+    PersonDeleteContainerComponent,
+    PersonCreateContainerComponent,
+    PersonCreateComponent,
+    PersonUpdateComponent,
+    PersonDeleteComponent,
+    PersonDetailComponent
+  ],
   imports: [
     CommonModule,
     PersonRoutingModule,
-    ReactiveFormsModule,
     ReactiveFormsModule,
     MatCardModule,
     MatDividerModule,
@@ -34,7 +53,9 @@ import {HttpClientModule} from '@angular/common/http';
     MatIconModule,
     MatButtonModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
