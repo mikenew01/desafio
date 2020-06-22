@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Person} from '../../../shared/models/person.model';
+import {Person} from '../../../../shared/models/person.model';
 import {Store} from '@ngrx/store';
 import * as fromPerson from '../../store/reducers/person.reducer';
 import {CreatePerson} from '../../store/actions/person.action';

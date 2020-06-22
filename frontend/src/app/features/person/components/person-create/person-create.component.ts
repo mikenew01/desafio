@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {Person} from '../../../shared/models/person.model';
+import {Person} from '../../../../shared/models/person.model';
 
 export interface ItemSelectAction {
   value: string;

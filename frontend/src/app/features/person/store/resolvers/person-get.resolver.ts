@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {filter, take} from 'rxjs/operators';
 import {selectPerson} from '../selectors/person.selector';
 import {GetPerson} from '../actions/person.action';
-import {Person} from '../../../shared/models/person.model';
+import {Person} from '../../../../shared/models/person.model';
 
 @Injectable()
 export class PersonGetResolver implements Resolve<Person> {

@@ -19,8 +19,8 @@ import {
   UpdatePerson,
   UpdatePersonSuccess
 } from '../actions/person.action';
-import {Resposta} from '../../../shared/models/resposta.model';
-import {NotificationService} from '../../../shared/services/notification.service';
+import {Resposta} from '../../../../shared/models/resposta.model';
+import {NotificationService} from '../../../../core/services/notification.service';
 
 @Injectable()
 export class PersonEffects {

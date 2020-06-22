@@ -1,8 +1,8 @@
 import {ActionReducerMap, MetaReducer} from '@ngrx/store';
-import {environment} from '../../environments/environment';
+import {environment} from '../../../environments/environment';
 
 
-import * as fromPerson from '../person/store/reducers/person.reducer';
+import * as fromPerson from '../../features/person/store/reducers/person.reducer';
 
 
 export interface State {

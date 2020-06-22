@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
-import {Person} from '../../../shared/models/person.model';
+import {Person} from '../../../../shared/models/person.model';
 import {PersonActionTypes} from '../actions/person.action';
 
 export const ENTITY_FEATURE_KEY = 'person';

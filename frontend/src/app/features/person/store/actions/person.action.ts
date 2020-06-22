@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {Person} from '../../../shared/models/person.model';
+import {Person} from '../../../../shared/models/person.model';
 
 export enum PersonActionTypes {
   GET_ALL_PERSONS = '@person/GET_ALL_PERSONS',

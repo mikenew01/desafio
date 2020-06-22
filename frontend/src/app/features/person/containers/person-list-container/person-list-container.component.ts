@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import * as fromPerson from '../../store/reducers/person.reducer';
 import {Observable} from 'rxjs';
-import {Person} from '../../../shared/models/person.model';
+import {Person} from '../../../../shared/models/person.model';
 import {selectAllPersons} from '../../store/selectors/person.selector';
 import {Router} from '@angular/router';
 

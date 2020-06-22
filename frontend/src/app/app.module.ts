@@ -7,7 +7,7 @@ import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppEffects} from './app.effects';
-import {metaReducers, reducers} from './reducers';
+import {metaReducers, reducers} from './core/reducers';
 import {SharedModule} from './shared/shared.module';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
@@ -19,8 +19,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {environment} from '../environments/environment';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {PersonEffects} from './person/store/effects/person.effect';
+import {PersonEffects} from './features/person/store/effects/person.effect';
 import {HttpClientModule} from '@angular/common/http';
+import {CoreModule} from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {HttpClientModule} from '@angular/common/http';
     MatIconModule,
     MatDividerModule,
     MatTooltipModule,
-    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production})
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent],

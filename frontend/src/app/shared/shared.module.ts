@@ -1,8 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {NotificationService} from './services/notification.service';
-import { MenuComponent } from './components/menu/menu.component';
+import {MenuComponent} from './components/menu/menu.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
@@ -22,7 +21,6 @@ import {MatButtonModule} from '@angular/material/button';
     MatButtonModule
   ],
   providers: [
-    NotificationService
   ],
   exports: [
     MenuComponent
