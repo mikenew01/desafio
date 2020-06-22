@@ -1,8 +1,9 @@
 package com.github.maikoncanuto.resources;
 
-import com.github.maikoncanuto.domains.dtos.OperatorDTO;
+
+import com.github.maikoncanuto.domains.dtos.PersonDTO;
 import com.github.maikoncanuto.domains.dtos.ResponseDTO;
-import com.github.maikoncanuto.services.OperatorService;
+import com.github.maikoncanuto.services.PersonService;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
@@ -15,28 +16,28 @@ import static java.lang.String.format;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.status;
 
-@Path("/operators")
+@Path("/persons")
 @Consumes(APPLICATION_JSON)
 @Produces(APPLICATION_JSON)
-public class OperatorResource {
+public class PersonResource {
 
     @Inject
-    OperatorService operatorService;
+    PersonService personService;
 
     @POST
     @RolesAllowed({ADMINISTRADOR, OPERADOR})
-    public Response create(OperatorDTO operatorDTO) {
+    public Response create(PersonDTO personDTO) {
         final var response = new ResponseDTO<>();
 
         try {
-            final var operador = operatorService.save(operatorDTO);
+            final var operador = personService.save(personDTO);
             response.setCode(201);
-            response.setMensage("Operador inserido com sucesso!");
+            response.setMensage("Pessoa inserido com sucesso!");
             response.setData(operador);
         } catch (Exception e) {
             response.setCode(400);
             response.setData(null);
-            response.setMensage(format("Erro ao inserir Operador, erro: %s", e.getMessage()));
+            response.setMensage(format("Erro ao inserir Pessoa, erro: %s", e.getMessage()));
         }
 
         return status(response.getCode())
@@ -51,13 +52,13 @@ public class OperatorResource {
         final var response = new ResponseDTO<>();
 
         try {
-            final var operador = operatorService.findById(id);
+            final var operador = personService.findById(id);
             response.setCode(200);
-            response.setMensage("Operador encontrado com sucesso!");
+            response.setMensage("Pessoa encontrado com sucesso!");
             response.setData(operador);
         } catch (Exception e) {
             response.setCode(400);
-            response.setMensage(format("Erro ao buscar Operador, erro: %s", e.getMessage()));
+            response.setMensage(format("Erro ao buscar Pessoa, erro: %s", e.getMessage()));
         }
 
         return status(response.getCode())
@@ -68,20 +69,20 @@ public class OperatorResource {
     @PUT
     @Path("/{id}")
     @RolesAllowed({ADMINISTRADOR, OPERADOR})
-    public Response update(@PathParam("id") final Long id, final OperatorDTO operatorDTO) {
+    public Response update(@PathParam("id") final Long id, final PersonDTO personDTO) {
         final var response = new ResponseDTO<>();
 
         try {
-            if (operatorDTO.getId() == null)
-                operatorDTO.setId(id);
+            if (personDTO.getId() == null)
+                personDTO.setId(id);
 
-            final var operador = operatorService.update(operatorDTO);
+            final var operador = personService.update(personDTO);
             response.setCode(200);
-            response.setMensage("Operador atualizado com sucesso!");
+            response.setMensage("Pessoa atualizado com sucesso!");
             response.setData(operador);
         } catch (Exception e) {
             response.setCode(400);
-            response.setMensage(format("Erro ao atualizar Operador, erro: %s", e.getMessage()));
+            response.setMensage(format("Erro ao atualizar Pessoa, erro: %s", e.getMessage()));
         }
 
         return status(response.getCode())
@@ -96,13 +97,13 @@ public class OperatorResource {
         final var response = new ResponseDTO<>();
 
         try {
-            operatorService.delete(id);
+            personService.delete(id);
             response.setCode(200);
-            response.setMensage("Operador removido com sucesso!");
+            response.setMensage("Pessoa removido com sucesso!");
             response.setData(id);
         } catch (Exception e) {
             response.setCode(400);
-            response.setMensage(format("Erro ao remover Operador, erro: %s", e.getMessage()));
+            response.setMensage(format("Erro ao remover Pessoa, erro: %s", e.getMessage()));
         }
 
         return status(response.getCode())
@@ -116,14 +117,14 @@ public class OperatorResource {
         final var response = new ResponseDTO<>();
 
         try {
-            final var operators = operatorService.findAll();
+            final var persons = personService.findAll();
             response.setCode(201);
-            response.setMensage("Operadores listado com sucesso!");
-            response.setData(operators);
+            response.setMensage("Pessoaes listado com sucesso!");
+            response.setData(persons);
         } catch (Exception e) {
             response.setCode(400);
             response.setData(null);
-            response.setMensage(format("Erro ao listar Operadores, erro: %s", e.getMessage()));
+            response.setMensage(format("Erro ao listar Pessoaes, erro: %s", e.getMessage()));
         }
 
         return status(response.getCode())
