@@ -14,6 +14,7 @@ export class PersonService {
   }
 
   public findAll(): Observable<Resposta> {
+    console.log('chamou');
     return this.http.get<Resposta>(`${environment.api}/persons`);
   }
 
