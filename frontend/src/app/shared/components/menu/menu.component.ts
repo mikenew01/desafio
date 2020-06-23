@@ -3,6 +3,7 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map, shareReplay} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {AuthService} from '../../../core/services/auth.service';
+import {InforOperator} from '../../models/infor-operator.model';
 
 @Component({
   selector: 'mcp-menu',
@@ -10,6 +11,8 @@ import {AuthService} from '../../../core/services/auth.service';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+
+  currentUser: InforOperator;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -21,6 +24,7 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.currentUserValueObservable.subscribe(user => this.currentUser = user);
   }
 
   logout() {

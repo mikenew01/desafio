@@ -22,11 +22,20 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
 
-      <div>
-        <span>MCP - Desafio</span>
+      <span>Sistema de cadastro de Pessoas</span>
+      <span class="bar-spacer"></span>
+      <div class="infos">
+        <span>
+          Login:
+          {{currentUser.login}}
+        </span>
+        <span>
+          Perfil:
+          {{currentUser.roleDescription}}
+        </span>
       </div>
-
     </mat-toolbar>
+
     <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -19,11 +19,40 @@ export class AuthService {
   }
 
   public get currentUserValue(): InforOperator {
+    if (this.currentUserSubject.value) {
+      this.currentUserSubject.value.roleDescription = this.currentRoleDescription;
+    }
+
     return this.currentUserSubject.value;
   }
 
   public get currentUserValueObservable(): Observable<InforOperator> {
     return this.currentUser;
+  }
+
+  public get currentRole(): string {
+    return this.currentUserValue.role;
+  }
+
+  public get currentRoleDescription(): string {
+    if (this.currentUserSubject.value) {
+      const role = this.currentUserSubject.value.role;
+
+      switch (role) {
+        case 'ADMINISTRADOR':
+          return 'Administrador';
+        case 'OPERADOR':
+          return 'Operador';
+        case 'GERENTE':
+          return 'Gerente';
+        case 'ANALISTA':
+          return 'Analista';
+        default:
+          return 'Não informado';
+      }
+    }
+
+    return null;
   }
 
   login(login, password) {
