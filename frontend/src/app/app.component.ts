@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {InforOperator} from './shared/models/infor-operator.model';
+import {AuthService} from './core/services/auth.service';
 
 @Component({
   selector: 'mcp-root',
@@ -6,12 +8,11 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'MCP - Desafio';
 
-  habilitarMenu = false;
+  currentUser: InforOperator;
 
-  constructor() {
-    const currentUser = localStorage.getItem('currentUser');
-    this.habilitarMenu = !!currentUser;
+  constructor(private authService: AuthService) {
+    authService.currentUserValueObservable.subscribe(user => this.currentUser = user);
   }
+
 }

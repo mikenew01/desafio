@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      login: ['', Validators.required],
-      password: ['', Validators.required]
+      login: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(15)]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]]
     });
 
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
@@ -61,6 +61,10 @@ export class LoginComponent implements OnInit {
           this.notificationService.error(error);
           this.loading = false;
         });
+  }
+
+  hasErros(controlName: string, errorName: string): any {
+    return this.loginForm.controls[controlName].hasError(errorName);
   }
 
 }

@@ -1,45 +1,51 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <mat-card class="card mat-elevation-z4">
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-card class="card mat-elevation-z4">
+      <mat-card-header>
+        <mat-card-title>Autenticação</mat-card-title>
+        <mat-card-subtitle>Sistema MCP - Desafio</mat-card-subtitle>
+      </mat-card-header>
 
-    <mat-card-header>
-      <mat-card-title>Autenticação</mat-card-title>
-      <mat-card-subtitle>Realizar Login</mat-card-subtitle>
-    </mat-card-header>
+      <mat-card-content>
+        <div class="formulario">
+          <mat-form-field appearance="fill">
+            <mat-label>Usuário</mat-label>
+            <input matInput
+                   type="text"
+                   placeholder="Exemplo: admin"
+                   maxlength="15"
+                   minlength="1"
+                   required
+                   formControlName="login"
+            />
+            <mat-error *ngIf="hasErros('login', 'required')">Campo obrigatório.</mat-error>
+            <mat-error *ngIf="hasErros('login', 'minlength')">Mínimo de 1 caracters.</mat-error>
+            <mat-error *ngIf="hasErros('login', 'maxlength')">Máximo de 15 caracters.</mat-error>
+          </mat-form-field>
 
-    <mat-card-content>
+          <mat-form-field appearance="fill">
+            <mat-label>Senha</mat-label>
+            <input matInput
+                   type="password"
+                   placeholder="Exemplo: 123456"
+                   maxlength="15"
+                   minlength="6"
+                   required
+                   formControlName="password"
+            />
+            <mat-error *ngIf="hasErros('password', 'required')">Campo obrigatório.</mat-error>
+            <mat-error *ngIf="hasErros('password', 'minlength')">Mínimo de 6 caracters.</mat-error>
+            <mat-error *ngIf="hasErros('password', 'maxlength')">Máximo de 15 caracters.</mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
 
-     <div class="formulario">
-       <mat-form-field hintLabel="Campo obrigatório">
-         <mat-label>Usuário</mat-label>
-         <input matInput
-                type="text"
-                placeholder="Exemplo: maikonmcp"
-                maxlength="16"
-                minlength="3"
-                required
-                formControlName="login"
-         />
-       </mat-form-field>
-
-       <mat-form-field hintLabel="Campo obrigatório">
-         <mat-label>Senha</mat-label>
-         <input matInput
-                type="password"
-                placeholder="Exemplo: ******"
-                maxlength="16"
-                minlength="3"
-                required
-                formControlName="password"
-         />
-       </mat-form-field>
-     </div>
-    </mat-card-content>
-
-    <mat-card-actions align="end">
-      <button mat-raised-button color="primary" [disabled]="loading" class="btn btn-primary">
-        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-        Entrar
-      </button>
-    </mat-card-actions>
-  </mat-card>
-</form>
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary" [disabled]="loading || loginForm.invalid">
+          Entrar
+          <span *ngIf="loading"><mat-spinner></mat-spinner></span>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

@@ -1,3 +1,5 @@
-<mcp-menu>
+<mcp-menu *ngIf="currentUser">
   <router-outlet></router-outlet>
 </mcp-menu>
+
+<router-outlet *ngIf="!currentUser"></router-outlet>

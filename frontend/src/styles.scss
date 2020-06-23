@@ -2,3 +2,37 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+::ng-deep .mat-snack-bar-container{
+  color: #155724 !important;
+  background-color: #d4edda !important;
+  border-color: #c3e6cb !important;
+}
+::ng-deep .mat-simple-snackbar-action {
+  color: red;
+}
+
+.snack-success {
+  background-color: #079e07;
+  color: white;
+  text-align: center;
+}
+
+.snack-warn {
+  background-color: #c2c201;
+  color: white;
+  text-align: center;
+}
+
+.snack-error {
+  background-color: #bf0000;
+  color: white;
+  text-align: center;
+}
+
+.snack-info {
+  background-color: #0269b8;
+  color: white;
+  text-align: center;
+}

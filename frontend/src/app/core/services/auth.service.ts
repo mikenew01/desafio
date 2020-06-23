@@ -22,6 +22,10 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
+  public get currentUserValueObservable(): Observable<InforOperator> {
+    return this.currentUser;
+  }
+
   login(login, password) {
     return this.http.post<any>(`${environment.api}/auth/login`, {login, password})
       .pipe(map(response => {
@@ -29,7 +33,6 @@ export class AuthService {
         const {groups, sub} = jwt_decode(token);
         const operator = {login: sub, role: groups[0], token};
         localStorage.setItem('currentUser', JSON.stringify(operator));
-        console.log('currentUser', localStorage.getItem('currentUser'));
         this.currentUserSubject.next(operator);
         return operator;
       }));

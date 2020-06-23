@@ -16,7 +16,7 @@ export class NotificationService {
 
   default(message: string) {
     this.show(message, {
-      duration: 2000,
+      duration: 4000,
       verticalPosition: 'top',
       horizontalPosition: 'center',
       panelClass: ['blue-snackbar']
@@ -25,10 +25,10 @@ export class NotificationService {
 
   success(message: string, locationBack: boolean = false) {
     this.show(message, {
-      duration: 3000,
+      duration: 4000,
       verticalPosition: 'top',
       horizontalPosition: 'center',
-      panelClass: ['success']
+      panelClass: ['snack-success']
     });
 
     if (locationBack) {
@@ -38,19 +38,19 @@ export class NotificationService {
 
   warn(message: string) {
     this.show(message, {
-      duration: 2500,
+      duration: 4000,
       verticalPosition: 'top',
       horizontalPosition: 'center',
-      panelClass: ['yellow-snackbar']
+      panelClass: ['snack-warn']
     });
   }
 
   error(message: string, locationBack: boolean = false) {
     this.show(message, {
-      duration: 3000,
+      duration: 4000,
       verticalPosition: 'top',
       horizontalPosition: 'center',
-      panelClass: ['red-snackbar']
+      panelClass: ['snack-error']
     });
 
     if (locationBack) {
