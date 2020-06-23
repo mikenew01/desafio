@@ -16,15 +16,28 @@
   z-index: 1;
 }
 
+.nav-toolbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .infos {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  justify-items: center;
   font-size: 15px;
   font-weight: normal;
 
   span {
     margin: 5px;
+  }
+
+  .btn-logout {
+    margin-left: 10px;
+    cursor: pointer;
+    margin-top: 8px;
   }
 }
 

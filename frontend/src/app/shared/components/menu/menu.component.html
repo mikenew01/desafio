@@ -8,11 +8,10 @@
       <a mat-list-item href="/">Início</a>
       <a mat-list-item href="/persons">Pessoas</a>
       <a mat-list-item href="/operators">Operadores</a>
-      <a mat-list-item (click)="logout()">Logout</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar class="nav-toolbar" color="primary">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -32,6 +31,9 @@
         <span>
           Perfil:
           {{currentUser.roleDescription}}
+        </span>
+        <span class="btn-logout" matTooltip="Sair do Sistema">
+          <mat-icon (click)="logout()">exit_to_app</mat-icon>
         </span>
       </div>
     </mat-toolbar>

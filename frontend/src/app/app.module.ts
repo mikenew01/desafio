@@ -22,6 +22,8 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {PersonEffects} from './features/person/store/effects/person.effect';
 import {HttpClientModule} from '@angular/common/http';
 import {CoreModule} from './core/core.module';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -41,13 +43,15 @@ import {CoreModule} from './core/core.module';
     HttpClientModule,
     MatInputModule,
     MatButtonModule,
+    MatFormFieldModule,
     MatTableModule,
     MatPaginatorModule,
     MatIconModule,
     MatDividerModule,
     MatTooltipModule,
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
-    CoreModule
+    CoreModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

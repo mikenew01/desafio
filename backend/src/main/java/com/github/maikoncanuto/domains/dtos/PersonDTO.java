@@ -13,6 +13,33 @@ public class PersonDTO extends BaseDTO {
     private String nameMother;
     private TypePersonEnum typePerson;
     private Date dateBirth;
+    private String loginOperator;
+    private Date createdAt;
+    private Date updateAt;
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
+    }
+
+    public String getLoginOperator() {
+        return loginOperator;
+    }
+
+    public void setLoginOperator(String loginOperator) {
+        this.loginOperator = loginOperator;
+    }
 
     public Long getId() {
         return id;

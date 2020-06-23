@@ -22,8 +22,9 @@ import {PersonCreateContainerComponent} from './containers/person-create-contain
 import {PersonCreateComponent} from './components/person-create/person-create.component';
 import {PersonUpdateComponent} from './components/person-update/person-update.component';
 import {PersonDeleteComponent} from './components/person-delete/person-delete.component';
-import {MatOptionModule} from '@angular/material/core';
+import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [PersonListContainerComponent,
@@ -51,7 +52,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     HttpClientModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Person} from '../../../../shared/models/person.model';
 
 export interface ItemSelectAction {
@@ -24,6 +24,8 @@ export class PersonCreateComponent implements OnInit {
     {value: 'PESSOA_JURIDICA', description: 'Pessoa Jurídica'}
   ];
 
+  maxDate = new Date();
+
   constructor(private formBuilder: FormBuilder) {
   }
 
@@ -33,12 +35,12 @@ export class PersonCreateComponent implements OnInit {
 
   createForm(): void {
     this.formGroup = this.formBuilder.group({
-      name: new FormControl('', []),
-      nameFather: new FormControl('', []),
-      nameMother: new FormControl('', []),
-      document: new FormControl('', []),
-      dateBirth: new FormControl('', []),
-      typePerson: new FormControl([''], [])
+      name: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]),
+      nameFather: new FormControl('', [Validators.minLength(1), Validators.maxLength(100)]),
+      nameMother: new FormControl('', [Validators.minLength(1), Validators.maxLength(100)]),
+      document: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(18)]),
+      dateBirth: new FormControl('', [Validators.required]),
+      typePerson: new FormControl([''], [Validators.required])
     });
   }
 

@@ -7,7 +7,7 @@
 
     <mat-card-content>
       <div>
-        <button mat-raised-button color="primary" (click)="create()">Novo
+        <button mat-flat-button color="primary" matTooltip="Cadastrar" (click)="create()">Novo
         </button>
       </div>
     </mat-card-content>
@@ -15,9 +15,9 @@
 
   <mat-card class="mat-elevation-z4">
     <mat-card-header>
-      <mat-card-title>Registros
+      <mat-card-title>Lista de registros
       </mat-card-title>
-      <mat-card-subtitle>Listagem dos pessoas cadastrados no serviço no backend</mat-card-subtitle>
+      <mat-card-subtitle>Pessoas cadastradas no banco de dados</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <mat-divider></mat-divider>
@@ -26,8 +26,7 @@
         <table mat-table [dataSource]="dataSource" matSort>
 
           <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Id
-            </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
             <td mat-cell *matCellDef="let row"> {{row.id}}</td>
           </ng-container>
 
@@ -37,7 +36,7 @@
           </ng-container>
 
           <ng-container matColumnDef="document">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Número do documento</th>
             <td mat-cell *matCellDef="let row"> {{row.document}} </td>
           </ng-container>
 
@@ -53,23 +52,28 @@
 
           <ng-container matColumnDef="typePerson">
             <th mat-header-cell *matHeaderCellDef>Tipo de Pessoa</th>
-            <td mat-cell *matCellDef="let row"> {{row.typePerson}} </td>
+            <td mat-cell *matCellDef="let row"> {{getTypePersonDescription(row.typePerson)}} </td>
           </ng-container>
 
           <ng-container matColumnDef="dateBirth">
             <th mat-header-cell *matHeaderCellDef>Data nascimento</th>
-            <td mat-cell *matCellDef="let row"> {{row.dateBirth}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.dateBirth | date: 'dd/mm/yyyy'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="loginOperator">
+            <th mat-header-cell *matHeaderCellDef>Login do Operator</th>
+            <td mat-cell *matCellDef="let row"> {{row.loginOperator}} </td>
           </ng-container>
 
           <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let row">
               <div>
-                <button mat-icon-button color="primary" (click)="update(row)">
+                <button mat-icon-button color="primary" matTooltip="Editar" (click)="update(row)">
                   <mat-icon class="mat-18">edit</mat-icon>
                 </button>
 
-                <button mat-icon-button color="warn" (click)="delete(row)">
+                <button mat-icon-button color="warn" matTooltip="Excluir" (click)="delete(row)">
                   <mat-icon class="mat-18">delete</mat-icon>
                 </button>
               </div>

@@ -25,6 +25,7 @@ public class PersonService {
     @Transactional(REQUIRED)
     public PersonDTO save(PersonDTO personDTO) throws Exception {
         final var personFromDTO = personMapper.toEntity(personDTO);
+        personFromDTO.setLoginOperator(personDTO.getLoginOperator());
         final var personDatabase = personRepository.save(personFromDTO);
 
         if (personDatabase.isPresent())

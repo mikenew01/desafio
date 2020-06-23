@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import * as fromPerson from '../../store/reducers/person.reducer';
 import {select, Store} from '@ngrx/store';
@@ -10,7 +10,8 @@ import {selectPerson} from '../../store/selectors/person.selector';
 @Component({
   selector: 'mcp-person-delete-container',
   templateUrl: './person-delete-container.component.html',
-  styleUrls: ['./person-delete-container.component.scss']
+  styleUrls: ['./person-delete-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PersonDeleteContainerComponent implements OnInit {
 

@@ -41,7 +41,7 @@
       </mat-card-content>
 
       <mat-card-actions align="end">
-        <button mat-raised-button color="primary" [disabled]="loading || loginForm.invalid">
+        <button mat-flat-button color="primary" [disabled]="loading || loginForm.invalid">
           Entrar
           <span *ngIf="loading"><mat-spinner></mat-spinner></span>
         </button>

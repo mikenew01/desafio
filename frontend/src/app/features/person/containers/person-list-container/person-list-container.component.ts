@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import * as fromPerson from '../../store/reducers/person.reducer';
 import {Observable} from 'rxjs';
@@ -9,7 +9,8 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'mcp-person-list-container',
   templateUrl: './person-list-container.component.html',
-  styleUrls: ['./person-list-container.component.scss']
+  styleUrls: ['./person-list-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PersonListContainerComponent implements OnInit {
 

@@ -1,7 +1,12 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Person} from '../../../../shared/models/person.model';
-import {ItemSelectAction} from '../person-create/person-create.component';
+
+export interface ItemSelectAction {
+  value: string;
+  description: string;
+}
+
 
 @Component({
   selector: 'mcp-person-update',
@@ -22,6 +27,8 @@ export class PersonUpdateComponent implements OnInit {
     {value: 'PESSOA_JURIDICA', description: 'Pessoa Jurídica'}
   ];
 
+  maxDate = new Date();
+
   constructor(private formBuilder: FormBuilder) {
   }
 
@@ -32,12 +39,13 @@ export class PersonUpdateComponent implements OnInit {
   updateForm(): void {
     this.formGroup = this.formBuilder.group({
       id: new FormControl(this.person.id, []),
-      name: new FormControl(this.person.name, []),
-      nameFather: new FormControl(this.person.nameFather, []),
-      nameMother: new FormControl(this.person.nameMother, []),
-      document: new FormControl(this.person.document, []),
-      dateBirth: new FormControl(this.person.dateBirth, []),
-      typePerson: new FormControl(this.person.typePerson, [])
+      name: new FormControl(this.person.name, [Validators.required, Validators.minLength(1), Validators.maxLength(100)]),
+      nameFather: new FormControl(this.person.nameFather, [Validators.minLength(1), Validators.maxLength(100)]),
+      nameMother: new FormControl(this.person.nameMother, [Validators.minLength(1), Validators.maxLength(100)]),
+      document: new FormControl(this.person.document, [Validators.required, Validators.minLength(10), Validators.maxLength(18)]),
+      dateBirth: new FormControl(this.person.dateBirth, [Validators.required]),
+      typePerson: new FormControl(this.person.typePerson, [Validators.required]),
+      loginOperator: new FormControl(this.person.loginOperator, [])
     });
   }
 
@@ -52,5 +60,6 @@ export class PersonUpdateComponent implements OnInit {
   hasErros(controlName: string, errorName: string): any {
     return this.formGroup.controls[controlName].hasError(errorName);
   }
+
 
 }

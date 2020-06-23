@@ -31,11 +31,13 @@ public class MockDataBase {
         personPrincial.setNameFather("José Carlos Silva");
         personPrincial.setDateBirth(new Date());
         personPrincial.setDocument("00011122233");
+        personPrincial.setLoginOperator("admin");
 
         operatorPrincipal.setLogin("admin");
         operatorPrincipal.setPassword("123456");
         operatorPrincipal.setPerson(personPrincial);
         operatorPrincipal.setRole(ADMINISTRADOR);
+
 
         operatorService.save(operatorPrincipal);
     }

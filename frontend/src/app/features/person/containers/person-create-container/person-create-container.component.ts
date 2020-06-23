@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Person} from '../../../../shared/models/person.model';
 import {Store} from '@ngrx/store';
 import * as fromPerson from '../../store/reducers/person.reducer';
@@ -8,7 +8,8 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'mcp-person-create-container',
   templateUrl: './person-create-container.component.html',
-  styleUrls: ['./person-create-container.component.scss']
+  styleUrls: ['./person-create-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PersonCreateContainerComponent implements OnInit {
 

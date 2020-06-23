@@ -1,7 +1,7 @@
 <section class="card">
   <mat-card class="mat-elevation-z4">
-    <mat-card-title>Nova Pessoa</mat-card-title>
-    <mat-card-subtitle>Cadastro de nova pessoa no serviço</mat-card-subtitle>
+    <mat-card-title>Cadastrar</mat-card-title>
+    <mat-card-subtitle>Formulário de cadastro para Pessoa</mat-card-subtitle>
 
     <form [formGroup]="formGroup"
           autocomplete="off" novalidate
@@ -9,40 +9,48 @@
 
       <mat-card-content>
         <div class="formulario">
-          <mat-form-field hintLabel="Campo obrigatório">
+          <mat-form-field appearance="fill">
             <mat-label>Nome completo</mat-label>
             <input matInput type="text"
                    placeholder="Exemplo: Maikon Canuto"
                    formControlName="name"
                    required
-                   minlength="3"
+                   minlength="1"
                    maxlength="100"/>
+
+            <mat-error *ngIf="hasErros('name', 'required')">Campo obrigatório.</mat-error>
+            <mat-error *ngIf="hasErros('name', 'minlength')">Mínimo de 1 caracters.</mat-error>
+            <mat-error *ngIf="hasErros('name', 'maxlength')">Máximo de 100 caracters.</mat-error>
           </mat-form-field>
 
-          <mat-form-field hintLabel="Campo obrigatório">
+          <mat-form-field appearance="fill">
             <mat-label>Nome do pai</mat-label>
             <input matInput
                    type="text"
                    placeholder="Exemplo: José Carlos"
                    maxlength="100"
-                   minlength="3"
-                   required
+                   minlength="1"
                    formControlName="nameFather"
             />
+
+            <mat-error *ngIf="hasErros('nameFather', 'minlength')">Mínimo de 1 caracters.</mat-error>
+            <mat-error *ngIf="hasErros('nameFather', 'maxlength')">Máximo de 100 caracters.</mat-error>
           </mat-form-field>
 
-          <mat-form-field hintLabel="Campo obrigatório">
+          <mat-form-field appearance="fill">
             <mat-label>Nome da mãe</mat-label>
             <input matInput type="text"
                    placeholder="Exemplo: Maria Carla"
-                   required
                    maxlength="100"
-                   minlength="3"
+                   minlength="1"
                    formControlName="nameMother"
             />
+
+            <mat-error *ngIf="hasErros('nameMother', 'minlength')">Mínimo de 1 caracters.</mat-error>
+            <mat-error *ngIf="hasErros('nameMother', 'maxlength')">Máximo de 100 caracters.</mat-error>
           </mat-form-field>
 
-          <mat-form-field hintLabel="Campo obrigatório">
+          <mat-form-field appearance="fill">
             <mat-label>Número de documento (CPF/CNPJ)</mat-label>
             <input matInput type="text"
                    minlength="10"
@@ -51,21 +59,43 @@
                    formControlName="document"
                    required
             />
+
+            <mat-error *ngIf="hasErros('document', 'required')">Campo obrigatório.</mat-error>
+            <mat-error *ngIf="hasErros('document', 'minlength')">Mínimo de 10 caracters.</mat-error>
+            <mat-error *ngIf="hasErros('document', 'maxlength')">Máximo de 18 caracters.</mat-error>
           </mat-form-field>
 
-          <mat-form-field hintLabel="Campo obrigatório">
+          <mat-form-field appearance="fill">
             <mat-label>Tipo de Pessoa</mat-label>
             <mat-select required formControlName="typePerson">
               <mat-option *ngFor="let action of optionsActionsList"
                           [value]="action.value">{{action.description}}</mat-option>
             </mat-select>
+            <mat-error *ngIf="hasErros('typePerson', 'required')">Campo obrigatório.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" hintLabel="Clique no icone para selecionar a data.">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput disabled [max]="maxDate" required formControlName="dateBirth" [matDatepicker]="pickerDateBirth">
+            <mat-datepicker-toggle matSuffix [for]="pickerDateBirth"></mat-datepicker-toggle>
+            <mat-datepicker touchUi disabled="false" #pickerDateBirth></mat-datepicker>
+
+            <mat-error *ngIf="hasErros('dateBirth', 'required')">Campo obrigatório.</mat-error>
           </mat-form-field>
         </div>
       </mat-card-content>
 
       <mat-card-actions align="end">
-        <button type="button" mat-raised-button color="warn" (click)="cancel()">Cancelar</button>
-        <button mat-raised-button color="primary">Confirmar</button>
+        <button class="btn"
+                matTooltip="Cancela o preenchimento do formulário"
+                type="button"
+                mat-flat-button color="warn" (click)="cancel()">Cancelar
+        </button>
+        <button class="btn"
+                matTooltip="Cadastra informações preenchidas no formulário"
+                type="submit"
+                mat-flat-button color="primary" [disabled]="formGroup.invalid">Confirmar
+        </button>
       </mat-card-actions>
     </form>
   </mat-card>

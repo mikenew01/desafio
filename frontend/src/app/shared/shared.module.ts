@@ -13,6 +13,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import {MatInputModule} from '@angular/material/input';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {MatInputModule} from '@angular/material/input';
     MatCardModule,
     ReactiveFormsModule,
     RouterModule,
-    MatInputModule
+    MatInputModule,
+    MatTooltipModule
   ],
   providers: [],
   exports: [

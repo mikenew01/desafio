@@ -45,8 +45,20 @@ public class Person extends BaseEntity {
     @Enumerated(STRING)
     private TypePersonEnum typePerson;
 
-    @Column(name = "DT_DATE_BIRTH")
+    @Column(name = "DS_LOGIN_OPERATOR", nullable = false, length = 15)
+    private String loginOperator;
+
+    @Column(name = "DT_DATE_BIRTH", nullable = false)
     private LocalDate dateBirth;
+
+
+    public String getLoginOperator() {
+        return loginOperator;
+    }
+
+    public void setLoginOperator(String loginOperator) {
+        this.loginOperator = loginOperator;
+    }
 
     public Long getId() {
         return id;

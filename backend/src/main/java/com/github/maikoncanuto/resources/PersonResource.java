@@ -8,10 +8,13 @@ import com.github.maikoncanuto.services.PersonService;
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 
-import static com.github.maikoncanuto.domains.enums.RoleAllow.ADMINISTRADOR;
-import static com.github.maikoncanuto.domains.enums.RoleAllow.OPERADOR;
+import java.security.Principal;
+
+import static com.github.maikoncanuto.domains.enums.RoleAllow.*;
 import static java.lang.String.format;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.status;
@@ -25,11 +28,14 @@ public class PersonResource {
     PersonService personService;
 
     @POST
-    @RolesAllowed({ADMINISTRADOR, OPERADOR})
-    public Response create(PersonDTO personDTO) {
+    @RolesAllowed({ADMINISTRADOR, GERENTE})
+    public Response create(PersonDTO personDTO, @Context SecurityContext securityContext) {
         final var response = new ResponseDTO<>();
 
         try {
+            Principal user = securityContext.getUserPrincipal();
+            System.out.println(user.getName());
+            personDTO.setLoginOperator(user.getName());
             final var operador = personService.save(personDTO);
             response.setCode(201);
             response.setMensage("Pessoa inserido com sucesso!");
@@ -47,7 +53,7 @@ public class PersonResource {
 
     @GET
     @Path("/{id}")
-    @RolesAllowed({ADMINISTRADOR, OPERADOR})
+    @RolesAllowed({ADMINISTRADOR, GERENTE})
     public Response find(@PathParam("id") final Long id) {
         final var response = new ResponseDTO<>();
 
@@ -68,7 +74,7 @@ public class PersonResource {
 
     @PUT
     @Path("/{id}")
-    @RolesAllowed({ADMINISTRADOR, OPERADOR})
+    @RolesAllowed({ADMINISTRADOR, GERENTE})
     public Response update(@PathParam("id") final Long id, final PersonDTO personDTO) {
         final var response = new ResponseDTO<>();
 
@@ -92,7 +98,7 @@ public class PersonResource {
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed({ADMINISTRADOR, OPERADOR})
+    @RolesAllowed({ADMINISTRADOR, GERENTE})
     public Response delete(@PathParam("id") final Long id) {
         final var response = new ResponseDTO<>();
 
@@ -112,19 +118,19 @@ public class PersonResource {
     }
 
     @GET
-    @RolesAllowed({ADMINISTRADOR, OPERADOR})
+    @RolesAllowed({ADMINISTRADOR, GERENTE})
     public Response findAll() {
         final var response = new ResponseDTO<>();
 
         try {
             final var persons = personService.findAll();
             response.setCode(201);
-            response.setMensage("Pessoaes listado com sucesso!");
+            response.setMensage("Pessoas listado com sucesso!");
             response.setData(persons);
         } catch (Exception e) {
             response.setCode(400);
             response.setData(null);
-            response.setMensage(format("Erro ao listar Pessoaes, erro: %s", e.getMessage()));
+            response.setMensage(format("Erro ao listar Pessoas, erro: %s", e.getMessage()));
         }
 
         return status(response.getCode())

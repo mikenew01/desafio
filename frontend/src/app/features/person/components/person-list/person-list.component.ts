@@ -14,7 +14,7 @@ export class PersonListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  displayedColumns: string[] = ['id', 'name', 'nameFather', 'nameMother', 'typePerson', 'dateBirth', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'nameFather', 'nameMother', 'typePerson', 'dateBirth', 'loginOperator', 'actions'];
   dataSource: MatTableDataSource<Person>;
 
   @Input() itemsPerPagePagination: number[] = [10, 20, 30, 40, 50];
@@ -25,11 +25,15 @@ export class PersonListComponent implements OnInit {
 
   @Input() persons: Person[] = [];
 
+  typePersons = {
+    PESSOA_FISICA: 'Pessoa Física',
+    PESSOA_JURIDICA: 'Pessoa Jurídica'
+  };
+
   constructor() {
   }
 
   ngOnInit(): void {
-    console.log('persons', this.persons);
     this.dataSource = new MatTableDataSource<Person>(this.persons);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -45,6 +49,10 @@ export class PersonListComponent implements OnInit {
 
   delete(person: Person): void {
     this.onDelete.emit(person);
+  }
+
+  getTypePersonDescription(type: string): string {
+    return this.typePersons[type];
   }
 
 }
