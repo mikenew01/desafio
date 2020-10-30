@@ -7,7 +7,6 @@ import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppEffects} from './app.effects';
-import {metaReducers, reducers} from './core/reducers';
 import {SharedModule} from './shared/shared.module';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
@@ -24,6 +23,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {CoreModule} from './core/core.module';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {operatorReducer} from './features/operator/store/reducers/operator.reducer';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot(reducers, {metaReducers}),
+    StoreModule.forRoot({operators: operatorReducer}),
     EffectsModule.forRoot([
       AppEffects,
       PersonEffects

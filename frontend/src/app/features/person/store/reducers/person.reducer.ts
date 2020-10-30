@@ -25,8 +25,7 @@ export function _reducer(
 ) {
   switch (action.type) {
     case PersonActionTypes.GET_ALL_PERSONS_SUCCESS: {
-      console.log('persons type', action.payload.persons);
-      return adapter.addAll(action.payload.persons, {...state, loaded: true});
+      return adapter.addMany(action.payload.persons, {...state, loaded: true});
     }
 
     case PersonActionTypes.GET_PERSON_SUCCESS: {
